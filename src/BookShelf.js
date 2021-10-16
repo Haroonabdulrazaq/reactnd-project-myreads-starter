@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Book from "./Book";
 
-export class BookShelf extends Component {
+class BookShelf extends Component {
   render() {
     const {category, books} = this.props;
     return (
