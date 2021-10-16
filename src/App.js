@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import * as BooksAPI from './BooksAPI';
-import BookShelf from "./BookShelf";
+import ListBooks from "./ListBooks";
 import './App.css';
 
 export class BooksApp extends Component {
@@ -31,18 +31,7 @@ export class BooksApp extends Component {
     const {categories, books} = this.state;
     return (
       <div className="app">
-        <div className="list-books">
-          <div className="list-books-title">
-            <h1>MyReads</h1>
-          </div>
-          <div className="list-books-content">
-            {categories.map((category)=> (
-              <div key={category}>
-                <BookShelf category={category} categories={categories} books={books}/>
-              </div>
-            ))}      
-          </div>
-        </div>
+        <ListBooks categories={categories} books={books}/>
       </div>
     )
   }

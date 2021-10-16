@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 
 class Book extends Component {
-
   render() {
-    console.log(this.props.books);
     return (
       <section className="bookshelf-books">
         <ol className="books-grid">
