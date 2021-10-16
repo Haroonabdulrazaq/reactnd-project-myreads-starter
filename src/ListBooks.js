@@ -7,6 +7,7 @@ import './App.css';
 class ListBooks extends Component {
   render() {
     const {categories, books} = this.props;
+
     return (
       <div className="list-books">
         <div className="list-books-title">
