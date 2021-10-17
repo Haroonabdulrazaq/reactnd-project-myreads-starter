@@ -6,7 +6,7 @@ import './App.css';
 
 class ListBooks extends Component {
   render() {
-    const {categories, books} = this.props;
+    const { books } = this.props;
 
     return (
       <div className="list-books">
@@ -14,11 +14,7 @@ class ListBooks extends Component {
           <h1>MyReads</h1>
         </div>
         <div className="list-books-content">
-          {categories.map((category)=> (
-            <div key={category}>
-              <BookShelf category={category} books={books}/>
-            </div>
-          ))}      
+          <BookShelf books={books}/>
         </div>
         <div className="open-search">
           <Link to="/search">Add a book</Link>
