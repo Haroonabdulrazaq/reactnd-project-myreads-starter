@@ -10,7 +10,10 @@ export class BooksApp extends Component {
   state= {
     books: [],
     shelf: "None",
+    search: "",
+    searchResult: [],
   }
+
   getAllBooks=()=>{
     BooksAPI.getAll()
     .then((books)=> {
@@ -33,15 +36,17 @@ export class BooksApp extends Component {
       })
   }
 
-  search=()=>{
-    BooksAPI.update()
-      .then(()=> {
-        console.log("Hello")
+  search=(e)=>{
+    BooksAPI.search(e.target.value)
+      .then((res)=> {
+        console.log(res)
+        this.setState({
+          searchResult: res
+        })
       })
   }
-
   render() {
-    const {shelf, books} = this.state;
+    const { searchResult, shelf, books } = this.state;
     if(books.length === 0) {
       return(
        <div className="loader-wrapper"> 
@@ -56,7 +61,7 @@ export class BooksApp extends Component {
           <ListBooks handleChange={this.handleChange} books={books} shelf={shelf}/>
         )} />
         <Route exact path="/search" render={()=> (
-          <Search onSearch={this.search}/>
+          <Search searchResult={searchResult} onSearch={this.search} handleChange={this.handleChange}/>
         )}/>
       </div>
     )
