@@ -9,27 +9,55 @@ import './App.css';
 export class BooksApp extends Component {
   state= {
     books: [],
+    shelf: "None",
+  }
+  getAllBooks=()=>{
+    BooksAPI.getAll()
+    .then((books)=> {
+      console.log(books)
+      this.setState({
+        books
+      })
+    })
   }
 
   componentDidMount(){
-    BooksAPI.getAll()
-      .then((books)=> {
-        console.log(books)
-        this.setState({
-          books
-        })
+    this.getAllBooks()
+  }
+
+  handleChange=(book, shelf)=>{
+    console.log(shelf);
+    BooksAPI.update(book, shelf)
+      .then(() =>{
+        this.getAllBooks()
       })
   }
 
+  search=()=>{
+    BooksAPI.update()
+      .then(()=> {
+        console.log("Hello")
+      })
+  }
 
   render() {
-    const {categories, books} = this.state;
+    const {shelf, books} = this.state;
+    if(books.length === 0) {
+      return(
+       <div className="loader-wrapper"> 
+          <div className="loader"></div>
+          <h2>Loading  your shelf...</h2>
+        </div>
+      )
+    }
     return (
       <div className="app">
         <Route exact path="/" render={()=>(
-          <ListBooks categories={categories} books={books}/>
+          <ListBooks handleChange={this.handleChange} books={books} shelf={shelf}/>
         )} />
-        <Route exact path="/search" component={Search}/>
+        <Route exact path="/search" render={()=> (
+          <Search onSearch={this.search}/>
+        )}/>
       </div>
     )
   }

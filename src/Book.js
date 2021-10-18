@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 
 class Book extends Component {
   render() {
+    const { handleChange, shelf, books } = this.props;
     return (
       <section className="bookshelf-books">
         <ol className="books-grid">
-          {this.props.books.map((book)=>(
+          {books.map((book)=>(
             <li key={book.id}>
               <div className="book">
                 <div className="book-top">
                   <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks["thumbnail"]}})` }}></div>
                   <div className="book-shelf-changer">
-                    <select>
+                    <select value={shelf} onChange={(e)=> handleChange(book, e.target.value)}>
                       <option value="move" disabled>Move to...</option>
                       <option value="currentlyReading">Currently Reading</option>
                       <option value="wantToRead">Want to Read</option>

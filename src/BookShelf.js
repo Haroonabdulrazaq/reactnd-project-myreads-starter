@@ -3,8 +3,8 @@ import Book from "./Book";
 
 class BookShelf extends Component {
   render() {
-    const { books } = this.props;
-    const categories = []
+    const { handleChange, shelf, books } = this.props;
+    const categories = [];
     for(let i=0; i< books.length; i++){
       if(categories.indexOf(books[i].shelf) === -1){
         categories.push(books[i].shelf)
@@ -20,19 +20,19 @@ class BookShelf extends Component {
             {category === "wantToRead"&&
               <>
                 <h2 className="bookshelf-title">Currently Reading</h2>
-                <Book books={currentlyReading} />
+                <Book books={currentlyReading} shelf={shelf} handleChange={handleChange} />
               </>
             }
             {category === "wantToRead" && 
               <>
                 <h2 className="bookshelf-title"> Want to Read</h2>
-                <Book books={wantToRead} />
+                <Book books={wantToRead} shelf={shelf} handleChange={handleChange}/>
               </>
             }
             {category === "wantToRead" &&
               <>
                 <h2 className="bookshelf-title">Read</h2>
-                <Book books={read} />
+                <Book books={read} shelf={shelf} handleChange={handleChange}/>
               </>
             }
           </div>

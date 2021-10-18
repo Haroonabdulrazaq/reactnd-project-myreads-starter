@@ -29,6 +29,30 @@ body, .app {
   flex: 1;
 }
 
+.loader-wrapper {
+  position: absolute;
+  top: 35%;
+  left: 35%;
+}
+.loader {
+  width: 120px;
+  height: 120px;
+  border-top: 6px  solid rgba(46, 124, 49, 0.8);
+  border-top: 6px  solid #2e7c31;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: rotating 2s linear infinite;
+}
+@keyframes rotating{
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+
+  }
+}
+
 .bookshelf {
   padding: 0 10px 20px;
 }

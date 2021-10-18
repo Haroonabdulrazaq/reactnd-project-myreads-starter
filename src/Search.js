@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import './App.css';
 
 class Search extends Component {
+  // componentDidMount(){
+
+  // }
   render() {
     return (
       <div className="search-books">
