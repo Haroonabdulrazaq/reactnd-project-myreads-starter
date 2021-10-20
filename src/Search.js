@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 // import Loader from "./Loader";
-import Book from "./Book"
+import Book from "./Book";
 import './App.css';
 
 class Search extends Component {
   render() {
-    const { search, searchResult, onSearch } = this.props;
-    console.log("Books in Search", searchResult);
-    console.log("Search String", search);
+    const { search, searchResult, onSearch, changeSearch } = this.props;
+    console.log("onSearch...", onSearch);
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -16,12 +15,12 @@ class Search extends Component {
             <button className="close-search">Close</button>
           </Link>
           <div className="search-books-input-wrapper">
-            <input type="text" placeholder="Search by title or author" value={search} onChange={onSearch}/>
+            <input type="text" placeholder="Search by title or author" value={search} onChange={(e)=>changeSearch(e.target.value)}/>
           </div>
         </div>
         {searchResult && <div className="search-books-results">
           <ol className="books-grid">
-            <Book books={searchResult}/>
+            <Book books={searchResult} handleChange={onSearch} />
           </ol>
         </div>}
       </div>

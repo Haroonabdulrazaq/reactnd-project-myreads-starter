@@ -36,12 +36,19 @@ export class BooksApp extends Component {
       })
   }
 
+  changeSearch=(e)=>{
+    this.setState({
+      search:  e
+    })
+  }
+
   search=(e)=>{
     BooksAPI.search(e.target.value)
       .then((res)=> {
-        console.log(res)
+        console.log("Onsearch Res",res)
         this.setState({
-          searchResult: res
+          searchResult: res,
+          search: e
         })
       })
   }
@@ -58,7 +65,7 @@ export class BooksApp extends Component {
           <ListBooks handleChange={this.handleChange} books={books} shelf={shelf}/>
         )} />
         <Route exact path="/search" render={()=> (
-          <Search searchResult={searchResult} onSearch={this.search} search={search}/>
+          <Search searchResult={searchResult} onSearch={this.search} changeSearch={this.changeSearch} search={search} />
         )}/>
       </div>
     )
