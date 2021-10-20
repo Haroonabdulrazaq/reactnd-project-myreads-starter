@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as BooksAPI from './BooksAPI';
 import { Route } from "react-router-dom";
 import ListBooks from "./ListBooks";
+import Loader from "./Loader";
 import Search from "./Search";
 
 import './App.css';
@@ -29,7 +30,6 @@ export class BooksApp extends Component {
   }
 
   handleChange=(book, shelf)=>{
-    console.log(shelf);
     BooksAPI.update(book, shelf)
       .then(() =>{
         this.getAllBooks()
@@ -46,13 +46,10 @@ export class BooksApp extends Component {
       })
   }
   render() {
-    const { searchResult, shelf, books } = this.state;
+    const { searchResult, shelf, books, search } = this.state;
     if(books.length === 0) {
       return(
-       <div className="loader-wrapper"> 
-          <div className="loader"></div>
-          <h2>Loading  your shelf...</h2>
-        </div>
+       <Loader text={`Loading  your shelf...`}/>
       )
     }
     return (
@@ -61,7 +58,7 @@ export class BooksApp extends Component {
           <ListBooks handleChange={this.handleChange} books={books} shelf={shelf}/>
         )} />
         <Route exact path="/search" render={()=> (
-          <Search searchResult={searchResult} onSearch={this.search} handleChange={this.handleChange}/>
+          <Search searchResult={searchResult} onSearch={this.search} search={search}/>
         )}/>
       </div>
     )
@@ -69,3 +66,6 @@ export class BooksApp extends Component {
 }
 
 export default BooksApp;
+
+// handleChange={()=> handleChange()}
+// handleChange={this.handleChange}
