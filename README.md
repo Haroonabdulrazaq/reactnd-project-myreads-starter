@@ -59,13 +59,6 @@ This project is [MIT](lic.url) licensed.
 
 
 
-
-
-
-
-
-
-
 ## TL;DR
 
 To get started developing right away:
