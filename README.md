@@ -4,6 +4,68 @@ This is the starter template for the final assessment project for Udacity's Reac
 
 Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
 
+
+## Screenshot :camera:
+  ![screenshot]()
+
+## Built with :heart:
+- React
+
+## Live Link :link:
+ [My Read]()
+
+## Set up :wrench:
+- [ ] Clone the repo using the git command <code> git clone git@github.com:Haroonabdulrazaq/reactnd-project-myreads-starter.git</code>
+- [ ] cd into the project directory <code> cd reactnd-project-myreads-starter </code>
+- [ ] To start the project <code> npm start </code>
+
+## Tools :hammer_and_wrench:
+- React js
+- Azure VSCode Deploy
+
+## Work Done
+- [] Main page shows three categories (Currently Reading, Want to Read, Read)
+- [] User c an Move Books between Shelves
+- [] Information Persist between each page refresh
+- [] The page has a search input that let Users Search
+- [] The search page allows users to categorize between shelfs (Currently Reading, Want to Read, Read)
+- [] The selection made on Search page appears on main page
+- [] The main page is linked to the search page and Vice versa
+- [] The project code handle state management
+- [] The code run with out Error
+
+ ## Deploy :rocket:
+This project is deployed to [Azure Web Apps]()
+
+## Author :man:
+
+👤 **Haroon Abdulrazaq**
+
+- Github: [@githubhandle](https://github.com/Haroonabdulrazaq)
+- Twitter: [@twitterhandle](https://twitter.com/hanq_o)
+- Linkedin: [linkedin](https://www.linkedin.com/in/haroonabdulrazaq)
+- Portfolio: [Portfolio](https://www.haroonabdulrazaq.tech)
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+- [MDN](https://udacity.com)
+
+## 📝 License
+
+This project is [MIT](lic.url) licensed.
+
+
+
+
+
+
+
+
+
+
 ## TL;DR
 
 To get started developing right away:
