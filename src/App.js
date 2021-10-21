@@ -13,7 +13,7 @@ export class BooksApp extends Component {
     shelf: "None",
     search: "",
     searchResult: [],
-    error: "false",
+    error: false,
   }
 
   getAllBooks=()=>{
@@ -31,15 +31,16 @@ export class BooksApp extends Component {
       error: false
     })
     const regex = /[a-zA-Z]/i
-    if(e.test(regex)){
+    if(regex.test(this.state.search)){
+      console.log("Regex Passed")
       BooksAPI.search(e)
         .then((res)=> {
-          console.log("Onsearch Res",res)
           this.setState({
             searchResult: res,
           })
         })
     } else {
+      console.log("Regex Failed")
       this.setState({
         error: true
       })
@@ -59,6 +60,12 @@ export class BooksApp extends Component {
   }
 
   changeSearch=(e)=>{
+    if(this.state.search.length === 0) {
+      console.log("Changing Search", this.state.search.length);
+      this.setState({
+        searchResult: []
+      })
+    }
     this.setState({
       search:  e
     })

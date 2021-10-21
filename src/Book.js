@@ -23,7 +23,8 @@ class Book extends Component {
                   </div>
                 </div>
                 <div className="book-title">{book.title}</div>
-                <div className="book-authors">{book.authors.length > 0? book.authors.join(", "): book.authors}</div>
+                <div className="book-authors">{book.authors }</div>  {/* Checks if the authors name is greater than one  If it is, It seperates them with a comma */}
+                                                                                                                       
               </div>
             </li>
           ))}
@@ -34,3 +35,5 @@ class Book extends Component {
 }
 
 export default Book;
+
+// <div className="book-authors">{book.authors.length > 0? book.authors.join(", "): book.authors }</div>  
