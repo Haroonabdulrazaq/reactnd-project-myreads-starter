@@ -65,7 +65,12 @@ export class BooksApp extends Component {
           <ListBooks handleChange={this.handleChange} books={books} shelf={shelf}/>
         )} />
         <Route exact path="/search" render={()=> (
-          <Search searchResult={searchResult} onSearch={this.search} changeSearch={this.changeSearch} search={search} />
+          <Search
+            searchResult={searchResult}
+            onSearch={this.search}
+            changeSearch={this.changeSearch}
+            handleChange={this.handleChange}
+            search={search} />
         )}/>
       </div>
     )
