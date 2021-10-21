@@ -6,8 +6,10 @@ import './App.css';
 
 class Search extends Component {
   render() {
-    const { search, searchResult, onSearch, changeSearch } = this.props;
-    console.log("onSearch...", onSearch);
+    const {search, searchResult, onSearch, changeSearch } = this.props;
+    console.log("onSearch...", searchResult);
+    // console.log("onSearch...", onSearch);
+    // console.log("Search...", search);
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -15,12 +17,14 @@ class Search extends Component {
             <button className="close-search">Close</button>
           </Link>
           <div className="search-books-input-wrapper">
-            <input type="text" placeholder="Search by title or author" value={search} onChange={(e)=>changeSearch(e.target.value)}/>
+            <input type="text" placeholder="Search by title or author" value={search} onChange={(e)=>{changeSearch(e.target.value)
+              onSearch(search)
+            }}/>
           </div>
         </div>
         {searchResult && <div className="search-books-results">
           <ol className="books-grid">
-            <Book books={searchResult} handleChange={onSearch} />
+            <Book books={searchResult} />
           </ol>
         </div>}
       </div>
@@ -29,5 +33,3 @@ class Search extends Component {
 }
 
 export default Search;
-
-// onSearch={search}

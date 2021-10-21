@@ -43,15 +43,15 @@ export class BooksApp extends Component {
   }
 
   search=(e)=>{
-    BooksAPI.search(e.target.value)
+    BooksAPI.search(e)
       .then((res)=> {
         console.log("Onsearch Res",res)
         this.setState({
           searchResult: res,
-          search: e
         })
       })
   }
+
   render() {
     const { searchResult, shelf, books, search } = this.state;
     if(books.length === 0) {
@@ -73,6 +73,3 @@ export class BooksApp extends Component {
 }
 
 export default BooksApp;
-
-// handleChange={()=> handleChange()}
-// handleChange={this.handleChange}
