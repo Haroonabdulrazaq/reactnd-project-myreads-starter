@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import BookShelf from "./BookShelf";
+import Header from "./Header";
 
 import './App.css';
 
@@ -9,9 +10,7 @@ class ListBooks extends Component {
     const { handleChange, books, shelf } = this.props;
     return (
       <div className="list-books">
-        <div className="list-books-title">
-          <h1>MyReads</h1>
-        </div>
+        <Header />
         <div className="list-books-content">
           <BookShelf books={books} shelf={shelf} handleChange={handleChange}/>
         </div>

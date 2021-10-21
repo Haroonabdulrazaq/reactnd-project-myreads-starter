@@ -16,7 +16,7 @@ class BookShelf extends Component {
     return (
       <div>
         {categories.map((category) => (
-          <div className="bookshelf" key={category}>
+          <div className="bookshelf" key={category}> {/* Rendeering each book by It Shelf*/}
             {category === "wantToRead"&&
               <>
                 <h2 className="bookshelf-title">Currently Reading</h2>

@@ -13,6 +13,7 @@ export class BooksApp extends Component {
     shelf: "None",
     search: "",
     searchResult: [],
+    error: "false",
   }
 
   getAllBooks=()=>{
@@ -25,8 +26,29 @@ export class BooksApp extends Component {
     })
   }
 
+  search=(e)=>{
+    this.setState({
+      error: false
+    })
+    const regex = /[a-zA-Z]/i
+    if(e.test(regex)){
+      BooksAPI.search(e)
+        .then((res)=> {
+          console.log("Onsearch Res",res)
+          this.setState({
+            searchResult: res,
+          })
+        })
+    } else {
+      this.setState({
+        error: true
+      })
+    }
+  }
+
   componentDidMount(){
-    this.getAllBooks()
+    this.getAllBooks();
+    this.search();
   }
 
   handleChange=(book, shelf)=>{
@@ -42,19 +64,10 @@ export class BooksApp extends Component {
     })
   }
 
-  search=(e)=>{
-    BooksAPI.search(e)
-      .then((res)=> {
-        console.log("Onsearch Res",res)
-        this.setState({
-          searchResult: res,
-        })
-      })
-  }
 
   render() {
-    const { searchResult, shelf, books, search } = this.state;
-    if(books.length === 0) {
+    const { search, searchResult, shelf, books, error } = this.state;
+    if(books.length === 0) {  // waiting for the books to fetch 
       return(
        <Loader text={`Loading  your shelf...`}/>
       )
@@ -70,7 +83,8 @@ export class BooksApp extends Component {
             onSearch={this.search}
             changeSearch={this.changeSearch}
             handleChange={this.handleChange}
-            search={search} />
+            search={search}
+            error={error} />
         )}/>
       </div>
     )
