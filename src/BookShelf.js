@@ -13,6 +13,7 @@ class BookShelf extends Component {
     const wantToRead = books.filter((book) => book.shelf === "wantToRead")
     const currentlyReading = books.filter((book) => book.shelf === "currentlyReading")
     const read = books.filter((book) => book.shelf === "read")
+
     return (
       <div>
         {categories.map((category) => (

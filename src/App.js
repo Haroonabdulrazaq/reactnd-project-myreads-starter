@@ -13,7 +13,8 @@ export class BooksApp extends Component {
     shelf: "None",
     search: "",
     searchResult: [],
-    error: false,
+    fetching: true,
+    customError: false,
   }
 
   getAllBooks=()=>{
@@ -21,14 +22,15 @@ export class BooksApp extends Component {
     .then((books)=> {
       console.log(books)
       this.setState({
-        books
+        books,
+        fetching: false,
       })
     })
   }
 
   search=(e)=>{
     this.setState({
-      error: false
+      customError: false
     })
     const regex = /[a-zA-Z]/i
     if(regex.test(this.state.search)){
@@ -37,12 +39,14 @@ export class BooksApp extends Component {
         .then((res)=> {
           this.setState({
             searchResult: res,
+            fetching: false,
+            customError: false,
           })
         })
     } else {
       console.log("Regex Failed")
       this.setState({
-        error: true
+        customError: true
       })
     }
   }
@@ -73,17 +77,13 @@ export class BooksApp extends Component {
 
 
   render() {
-    const { search, searchResult, shelf, books, error } = this.state;
-    if(books.length === 0) {  // waiting for the books to fetch 
-      return(
-       <Loader text={`Loading  your shelf...`}/>
-      )
-    }
+    const { fetching, search, searchResult, shelf, books, customError } = this.state;
     return (
       <div className="app">
         <Route exact path="/" render={()=>(
           <ListBooks handleChange={this.handleChange} books={books} shelf={shelf}/>
         )} />
+        {fetching && <Loader text={`Loading  your shelf...`}/>}
         <Route exact path="/search" render={()=> (
           <Search
             searchResult={searchResult}
@@ -91,7 +91,7 @@ export class BooksApp extends Component {
             changeSearch={this.changeSearch}
             handleChange={this.handleChange}
             search={search}
-            error={error} />
+            customError={customError} />
         )}/>
       </div>
     )
