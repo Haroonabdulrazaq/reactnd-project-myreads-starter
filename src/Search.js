@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 // import Loader from "./Loader";
 import Book from "./Book";
-// import Error from "./Error";
+import Error from "./Error";
 import './App.css';
 
 class Search extends Component {
@@ -26,7 +26,7 @@ class Search extends Component {
         </div>
        { customError &&
             <div className="search-books-results">
-              <p>Please enter a valid search</p> 
+              <Error text={`Please enter a valid search`} />
             </div>
         }
         {searchResult && <div className="search-books-results">

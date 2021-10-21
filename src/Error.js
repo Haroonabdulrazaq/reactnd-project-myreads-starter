@@ -4,7 +4,7 @@ class Error extends Component {
   render() {
     return (
       <div>
-        {this.props.children}
+        {this.props.text}
       </div>
     )
   }
