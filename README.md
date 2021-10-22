@@ -12,7 +12,7 @@ Of course, you are free to start this project from scratch if you wish! Just be 
 - React
 
 ## Live Link :link:
- [My Read]()
+ [My Read](https://myreads.azurewebsites.net/)
 
 ## Set up :wrench:
 - [ ] Clone the repo using the git command <code> git clone git@github.com:Haroonabdulrazaq/reactnd-project-myreads-starter.git</code>
