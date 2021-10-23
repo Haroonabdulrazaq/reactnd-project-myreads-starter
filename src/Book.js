@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Book extends Component {
-  render() {
-    const { handleChange, books } = this.props; //  shelf,
-    return (
-      <section className="bookshelf-books">
-        <ol className="books-grid">
+const Book = () => {
+  const { handleChange, books } = this.props;
+  return (
+    <section className="bookshelf-books">
+      <ol className="books-grid">
           {books.map((book)=>(
             <li key={book.id}>
               <div className="book">
@@ -27,9 +26,9 @@ class Book extends Component {
             </li>
           ))}
         </ol>
-      </section>
-    )
-  }
+    </section>
+  )
 }
 
 export default Book;
+
