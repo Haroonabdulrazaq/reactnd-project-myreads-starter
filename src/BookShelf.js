@@ -13,12 +13,11 @@ class BookShelf extends Component {
     const wantToRead = books.filter((book) => book.shelf === "wantToRead")
     const currentlyReading = books.filter((book) => book.shelf === "currentlyReading")
     const read = books.filter((book) => book.shelf === "read")
-
     return (
       <div>
         {categories.map((category) => (
           <div className="bookshelf" key={category}> {/* Rendeering each book by It Shelf*/}
-            {category === "wantToRead"&&
+            {category === "currentlyReading"&&
               <>
                 <h2 className="bookshelf-title">Currently Reading</h2>
                 <Book books={currentlyReading} handleChange={handleChange} />
@@ -30,7 +29,7 @@ class BookShelf extends Component {
                 <Book books={wantToRead} handleChange={handleChange}/>
               </>
             }
-            {category === "wantToRead" &&
+            {category === "read" &&
               <>
                 <h2 className="bookshelf-title">Read</h2>
                 <Book books={read} handleChange={handleChange}/>

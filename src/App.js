@@ -57,9 +57,12 @@ export class BooksApp extends Component {
   }
 
   handleChange=(book, shelf)=>{
+    book.shelf = shelf
     BooksAPI.update(book, shelf)
       .then(() =>{
-        this.getAllBooks()
+        this.setState((prevState) => ({
+          books: prevState.books.filter(b => b.id !== book.id).concat([ book ])
+        }))
       })
   }
 
