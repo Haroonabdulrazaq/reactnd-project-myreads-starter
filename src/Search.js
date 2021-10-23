@@ -25,19 +25,34 @@ class Search extends Component {
               }}/>
           </div>
         </div>
-       { customError &&
+        {
+          books.error === "empty query" ? (
             <div className="search-books-results">
-              <Error text={`Please enter a valid search`} />
+              <Error text={`There is no book matching your search`} />
             </div>
+          ) : (
+            <div className="search-books-results">
+              <ol className="books-grid">
+                <Book books={books} handleChange={handleChange} /> {/*Reusing the Book component*/}
+              </ol>
+            </div>
+          )
         }
-        {books && <div className="search-books-results">
-          <ol className="books-grid">
-            <Book books={books} handleChange={handleChange} /> {/*Reusing the Book component*/}
-          </ol>
-        </div>}
       </div>
     )
   }
 }
 
 export default Search;
+
+
+// { books.error === "empty query" &&
+//             <div className="search-books-results">
+//               <Error text={`Please enter a valid search`} />
+//             </div>
+//       }
+//         {books && <div className="search-books-results">
+//           <ol className="books-grid">
+//             <Book books={books} handleChange={handleChange} /> {/*Reusing the Book component*/}
+//           </ol>
+//         </div>}
