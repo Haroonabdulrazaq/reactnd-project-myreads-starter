@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "/subscriptions/dd276e2e-53d7-43a3-9995-810b86576c25/resourceGroups/MyReads/providers/Microsoft.Web/sites/MyReads",
+  "appService.deploySubpath": "."
+}

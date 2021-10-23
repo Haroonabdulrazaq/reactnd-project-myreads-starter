@@ -7,12 +7,12 @@ import './App.css';
 
 class ListBooks extends Component {
   render() {
-    const { handleChange, books, shelf } = this.props;
+    const { handleChange, books } = this.props;
     return (
       <div className="list-books">
         <Header />
         <div className="list-books-content">
-          <BookShelf books={books} shelf={shelf} handleChange={handleChange}/>
+          <BookShelf books={books} handleChange={handleChange}/>
         </div>
         <div className="open-search">
           <Link to="/search">Add a book</Link>

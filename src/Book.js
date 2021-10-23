@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Book extends Component {
   render() {
-    const { handleChange, shelf, books } = this.props;
+    const { handleChange, books } = this.props; //  shelf,
     return (
       <section className="bookshelf-books">
         <ol className="books-grid">
@@ -12,9 +12,8 @@ class Book extends Component {
                 <div className="book-top">
                   <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks["thumbnail"]}})` }}></div>
                   <div className="book-shelf-changer">
-                    <select value={shelf} onChange={(e)=> handleChange(book, e.target.value)}>
+                    <select value={book.shelf} onChange={(e)=> handleChange(book, e.target.value)}>
                       <option value="move" disabled>Move to...</option>
-                      <option value="currentlyReading"></option>
                       <option value="currentlyReading">Currently Reading</option>
                       <option value="wantToRead">Want to Read</option>
                       <option value="read">Read</option>
