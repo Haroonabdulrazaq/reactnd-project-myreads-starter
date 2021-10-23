@@ -12,7 +12,6 @@ export class BooksApp extends Component {
     books: [],
     shelf: "None",
     search: "",
-    searchResult: [],
     fetching: true,
     customError: false,
   }
@@ -38,7 +37,7 @@ export class BooksApp extends Component {
       BooksAPI.search(e)
         .then((res)=> {
           this.setState({
-            searchResult: res,
+            books: res,
             fetching: false,
             customError: false,
           })
@@ -69,9 +68,9 @@ export class BooksApp extends Component {
   changeSearch=(e)=>{
     if(this.state.search.length === 0) {
       console.log("Changing Search", this.state.search.length);
-      this.setState((prevState)=>({
-        searchResult: prevState.searchResult.includes(e)
-      }))
+      this.setState({
+        books: []
+      })
     }
     this.setState({
       search:  e
@@ -80,7 +79,7 @@ export class BooksApp extends Component {
 
 
   render() {
-    const { fetching, search, searchResult, shelf, books, customError } = this.state;
+    const { fetching, search, shelf, books, customError } = this.state;
     return (
       <div className="app">
         <Route exact path="/" render={()=>(
@@ -89,7 +88,7 @@ export class BooksApp extends Component {
         {fetching && <Loader text={`Loading  your shelf...`}/>}
         <Route exact path="/search" render={()=> (
           <Search
-            searchResult={searchResult}
+            books={books}
             onSearch={this.search}
             changeSearch={this.changeSearch}
             handleChange={this.handleChange}

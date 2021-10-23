@@ -7,9 +7,10 @@ import './App.css';
 
 class Search extends Component {
   render() {
-    const {search, searchResult, onSearch, changeSearch, handleChange, customError  } = this.props; // Destructuring the props Obj
-    console.log("onSearch...", searchResult); // Logging to see when the books fetches
+    const {search, books, onSearch, changeSearch, handleChange, customError  } = this.props; // Destructuring the props Obj
+    console.log("onSearch...", books); // Logging to see when the books fetches
     console.log("onSearch Error...", customError); 
+
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -29,9 +30,9 @@ class Search extends Component {
               <Error text={`Please enter a valid search`} />
             </div>
         }
-        {searchResult && <div className="search-books-results">
+        {books && <div className="search-books-results">
           <ol className="books-grid">
-            <Book books={searchResult} handleChange={handleChange} /> {/*Reusing the Book component*/}
+            <Book books={books} handleChange={handleChange} /> {/*Reusing the Book component*/}
           </ol>
         </div>}
       </div>
