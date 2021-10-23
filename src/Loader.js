@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react'
 import "./App.css";
 
-export class Loader extends Component {
-  render() {
-    return(
-      <div className="loader-wrapper"> 
-         <div className="loader"></div>
-         <h2>{this.props.text}</h2>
-       </div>
-     )
-  }
+
+const Loader = (props) => {
+  return(
+    <div className="loader-wrapper"> 
+       <div className="loader"></div>
+       <h2>{props.text}</h2>
+     </div>
+   )
 }
 
-export default Loader
+export default Loader;
+
