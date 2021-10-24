@@ -112,16 +112,3 @@ export class BooksApp extends Component {
 }
 
 export default BooksApp;
-
-
-// changeSearch=(e)=>{
-//   if(this.state.search.length === 0) {
-//     console.log("Changing Search", this.state.search.length);
-//     this.setState({
-//       searchResult: []
-//     })
-//   }
-//   this.setState({
-//     search:  e
-//   })
-// }
