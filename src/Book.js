@@ -22,8 +22,8 @@ const Book = (props) => {
               </div>
             </div>
             <div className="book-title">{book.title}</div>
-            <div className="book-authors">{book.authors.join(", ") }</div>  {/* Checks if the authors name is greater than one  If it is, It seperates them with a comma */}                                                                                                  
-          </div>
+            <div className="book-authors">{book.authors === undefined? "" : book.authors.join(", ") }</div>  {/* Checks if the authors name is greater than one  If it is, It seperates them with a comma */}                                                                                                  
+          </div> 
         </li>
       ))}
     </ol>
