@@ -76,7 +76,7 @@ export class BooksApp extends Component {
 
   changeSearch=(e)=>{
     console.log("EEEEE",e.length);
-    if(e.length <= 1) {
+    if(e === "") {
       console.log("Changing Search", e.length);
       this.setState({
         searchResult: []

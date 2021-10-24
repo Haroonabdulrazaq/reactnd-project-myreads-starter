@@ -9,7 +9,7 @@ class Search extends Component {
   render() {
     const {search, books, onSearch, changeSearch, handleChange, searchResult, handleReset } = this.props; // Destructuring the props Obj
     console.log("onSearch...", books); // Logging to see when the books fetches
-    console.log("SearchResult...", searchResult);
+    console.log("SearchResult...", search);
     // const bookSearch = books.filter(book => book.shelf === undefined ) 
     // console.log("Book Search", bookSearch);
     return (
