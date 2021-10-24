@@ -12,6 +12,7 @@ export class BooksApp extends Component {
     books: [],
     shelf: "None",
     search: "",
+    searchResult: [],
     fetching: true,
     customError: false,
   }
@@ -37,7 +38,7 @@ export class BooksApp extends Component {
       BooksAPI.search(e)
         .then((res)=> {
           this.setState({
-            books: res,
+            searchResult: res,
             fetching: false,
             customError: false,
           })
@@ -65,21 +66,30 @@ export class BooksApp extends Component {
       })
   }
 
+  handleReset=()=>{
+    console.log("reseting...");
+    this.setState({
+      search: "",
+      searchResult: []
+    })
+  }
+
   changeSearch=(e)=>{
-    if(this.state.search.length === 0) {
-      console.log("Changing Search", this.state.search.length);
+    console.log("EEEEE",e.length);
+    if(e.length <= 1) {
+      console.log("Changing Search", e.length);
       this.setState({
-        books: []
+        searchResult: []
       })
     }
     this.setState({
-      search:  e
+      search: e
     })
   }
 
 
   render() {
-    const { fetching, search, shelf, books, customError } = this.state;
+    const { fetching, search, shelf, books, customError, searchResult } = this.state;
     return (
       <div className="app">
         <Route exact path="/" render={()=>(
@@ -88,12 +98,13 @@ export class BooksApp extends Component {
         {fetching && <Loader text={`Loading  your shelf...`}/>}
         <Route exact path="/search" render={()=> (
           <Search
-            books={books}
+          searchResult={searchResult}
             onSearch={this.search}
             changeSearch={this.changeSearch}
             handleChange={this.handleChange}
             search={search}
-            customError={customError} />
+            customError={customError}
+            handleReset={this.handleReset} />
         )}/>
       </div>
     )
