@@ -7,9 +7,9 @@ import './App.css';
 
 class Search extends Component {
   render() {
-    const {search, books, onSearch, changeSearch, handleChange, searchResult, handleReset } = this.props; // Destructuring the props Obj
+    const {search, books, onSearch, changeSearch, handleChange, handleReset, searchResult } = this.props; // Destructuring the props Obj
     console.log("onSearch...", books); // Logging to see when the books fetches
-    console.log("SearchResult...", typeof search);
+    // console.log("SearchResult...", searchResult);
     // const bookSearch = books.filter(book => book.shelf === undefined ) 
     // console.log("Book Search", bookSearch);
     return (
@@ -27,7 +27,7 @@ class Search extends Component {
           </div>
         </div>
         {
-          searchResult.error? (
+          books.error? (
             <div className="search-books-results">
               <Error text={`There is no book matching your search`} />
             </div>

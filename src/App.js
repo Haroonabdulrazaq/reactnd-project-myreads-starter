@@ -32,24 +32,37 @@ export class BooksApp extends Component {
     this.setState({
       customError: false
     })
-    const myBooks = this.state.books.includes(e)
     const regex = /[a-zA-Z]/i
     if(regex.test(this.state.search)){
       console.log("Regex Passed")
-      BooksAPI.search(e)
-        .then((res)=> {
-          this.setState({
-            searchResult: res? res.concat(myBooks) : [],
-            fetching: false,
-            customError: false,
+      if (e !== "") {
+        const existingBooks = this.state.books;
+        BooksAPI.search(e)
+          .then((searchBooks)=> {
+            if(searchBooks.length > 0){
+              const newBooks = searchBooks.map((book) => {
+                const theSameBook = existingBooks.find((b) => b.id === book.id)
+                return theSameBook? theSameBook : book
+              })
+              console.log("newBooks", newBooks);
+              this.setState({
+                searchResult: newBooks? newBooks: [],
+                fetching: false,
+                customError: false,
+              })
+            } 
+            if(e === "") {
+              this.setState({
+                searchResult: []
+              })
+            }
           })
+      } else {
+        this.setState({
+          searchResult: []
         })
-    } else {
-      console.log("Regex Failed")
-      this.setState({
-        customError: true
-      })
-    }
+      }
+    } 
   }
 
   componentDidMount(){
@@ -79,6 +92,12 @@ export class BooksApp extends Component {
     this.setState({
       search: e
     })
+   if (e === "") {
+     this.setState({
+       searchResult: []
+     })
+   }
+    // this.search(e)
   }
 
 
@@ -93,6 +112,7 @@ export class BooksApp extends Component {
         <Route exact path="/search" render={()=> (
           <Search
           searchResult={searchResult}
+            books={books}
             onSearch={this.search}
             changeSearch={this.changeSearch}
             handleChange={this.handleChange}
