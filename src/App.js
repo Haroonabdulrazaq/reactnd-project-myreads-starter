@@ -17,8 +17,8 @@ export class BooksApp extends Component {
     customError: false,
   }
 
-  getAllBooks=()=>{
-    BooksAPI.getAll()
+   getAllBooks=()=>{
+   BooksAPI.getAll()
     .then((books)=> {
       console.log(books)
       this.setState({
@@ -32,13 +32,14 @@ export class BooksApp extends Component {
     this.setState({
       customError: false
     })
+    const myBooks = this.state.books.includes(e)
     const regex = /[a-zA-Z]/i
     if(regex.test(this.state.search)){
       console.log("Regex Passed")
       BooksAPI.search(e)
         .then((res)=> {
           this.setState({
-            searchResult: res,
+            searchResult: res? res.concat(myBooks) : [],
             fetching: false,
             customError: false,
           })
@@ -75,13 +76,6 @@ export class BooksApp extends Component {
   }
 
   changeSearch=(e)=>{
-    console.log("EEEEE",e.length);
-    if(e === "") {
-      console.log("Changing Search", e.length);
-      this.setState({
-        searchResult: []
-      })
-    }
     this.setState({
       search: e
     })
